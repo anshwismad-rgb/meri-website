@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron House Gym — Strength Training in Lucknow</title>
+<meta name="description" content="Iron House is a strength and conditioning gym in Gomti Nagar, Lucknow. Powerlifting, functional training, boxing conditioning and nutrition coaching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forge-black: #15120f;
+    --anvil: #211c17;
+    --anvil-2: #2a231c;
+    --bone: #f3ece0;
+    --bone-dim: #d9d0c2;
+    --ember: #d9541f;
+    --ember-bright: #f1682f;
+    --brass: #c6a15b;
+    --brass-dim: #a6875192;
+    --iron-grey: #6e6659;
+    --line: #3a332a;
+
+    --bg: var(--forge-black);
+    --surface: var(--anvil);
+    --surface-2: var(--anvil-2);
+    --text: var(--bone);
+    --text-dim: var(--bone-dim);
+    --muted: var(--iron-grey);
+    --accent: var(--ember);
+    --accent-bright: var(--ember-bright);
+    --gold: var(--brass);
+    --border: var(--line);
+    --shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 720px) {
+    body { padding: 0 64px; }
+  }
+
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+  .display {
+    font-family: "Bebas Neue", "Archivo", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+
+  .eyebrow {
+    font-family: "Archivo", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    gap: 16px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.04em;
+  }
+  .brand .dot { color: var(--accent-bright); font-family: "Archivo", sans-serif; }
+
+  .nav-links {
+    display: none;
+    gap: 32px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  @media (min-width: 860px) {
+    .nav-links { display: flex; }
+  }
+  .nav-links a { text-decoration: none; color: var(--text-dim); transition: color 0.15s ease; }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent-bright); }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--forge-black);
+    background: var(--accent);
+    padding: 10px 20px;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { background: var(--accent-bright); }
+
+  /* ---------- Seam divider ---------- */
+  .seam {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+  }
+  .seam::before, .seam::after, .seam .rivet {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    transform: translateY(-1.5px);
+  }
+  .seam .rivet:nth-of-type(1) { margin-left: 18%; }
+  .seam .rivet:nth-of-type(2) { margin-left: auto; margin-right: 18%; }
+
+  section { padding-block: 64px; }
+  @media (min-width: 860px) {
+    section { padding-block: 128px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 64px;
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 860px) {
+    .hero { padding-top: 56px; padding-bottom: 96px; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 48px; }
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 10vw, 96px);
+    color: var(--text);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-copy p {
+    max-width: 46ch;
+    color: var(--text-dim);
+    font-size: 17px;
+    margin: 24px 0 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--accent); color: #1a1006; }
+  .btn-primary:hover, .btn-primary:focus-visible { background: var(--accent-bright); }
+  .btn-ghost { border-color: var(--border); color: var(--text); background: transparent; }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--muted); }
+  .btn:active { transform: scale(0.98); }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+  .hero-stats div { min-width: 90px; }
+  .hero-stats .num {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 40px;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .hero-stats .lbl {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  /* hero visual: forged plate texture, no library needed */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 3px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(217,84,31,0.35), transparent 55%),
+      repeating-linear-gradient(115deg, #221c16 0px, #221c16 2px, #1b1611 2px, #1b1611 4px),
+      linear-gradient(160deg, #2a231c, #15120f 75%);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero-visual::before {
+    content: "IH";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: min(38vw, 220px);
+    color: rgba(243,236,224,0.05);
+    letter-spacing: 0.02em;
+  }
+  .hero-visual .plate-tag {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(21,18,15,0.72);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    border-radius: 2px;
+    backdrop-filter: blur(2px);
+  }
+  .hero-visual .plate-tag .eyebrow { display: block; margin-bottom: 4px; }
+  .hero-visual .plate-tag strong { font-size: 15px; }
+
+  /* ---------- Section heads ---------- */
+  .section-head {
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+  .section-head h2 {
+    font-size: clamp(34px, 5vw, 52px);
+    margin-top: 12px;
+  }
+  .section-head p {
+    color: var(--text-dim);
+    margin-top: 16px;
+    max-width: 55ch;
+  }
+
+  /* ---------- Pricing ---------- */
+  .pricing-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 860px) {
+    .pricing-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+  }
+
+  .plan {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .plan.featured {
+    border-color: var(--brass-dim);
+    background:
+      linear-gradient(180deg, rgba(198,161,91,0.08), transparent 40%),
+      var(--surface-2);
+    box-shadow: var(--shadow);
+  }
+  @media (min-width: 860px) {
+    .plan.featured { transform: translateY(-16px); padding-block: 44px; }
+  }
+  .plan.featured::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(198,161,91,0.35);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .plan-tag {
+    position: absolute;
+    top: -13px;
+    left: 30px;
+    background: var(--gold);
+    color: #1e1608;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .plan h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+  }
+  .plan .plan-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 40px;
+  }
+  .plan .price {
+    margin-top: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .plan .price .amount {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 48px;
+    color: var(--text);
+  }
+  .plan.featured .price .amount { color: var(--gold); }
+  .plan .price .period { color: var(--muted); font-size: 13px; }
+
+  .plan ul {
+    list-style: none;
+    margin: 28px 0 32px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+  }
+  .plan li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-dim);
+    align-items: flex-start;
+  }
+  .plan li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    margin-top: 7px;
+    flex-shrink: 0;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+  .plan.featured li::before { background: var(--gold); }
+
+  .plan .btn { justify-content: center; width: 100%; }
+
+  /* ---------- Trainers ---------- */
+  .trainer-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 720px) {
+    .trainer-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .trainer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .trainer-photo {
+    aspect-ratio: 3 / 4;
+    position: relative;
+    background: linear-gradient(160deg, #3a2a1c, #15120f 70%);
+  }
+  .trainer-photo::after {
+    content: attr(data-initials);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 64px;
+    color: rgba(217,84,31,0.55);
+    mix-blend-mode: screen;
+  }
+  .trainer-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, rgba(0,0,0,0.15) 0 3px, transparent 3px 7px);
+  }
+  .trainer-tag {
+    padding: 16px 16px 18px;
+    border-top: 1px solid var(--border);
+  }
+  .trainer-tag .name {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+  }
+  .trainer-tag .role {
+    font-size: 11px;
+    color: var(--accent-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-weight: 700;
+  }
+  .trainer-tag .bio {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* ---------- Reviews ---------- */
+  .review-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .review-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .review {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 3px 3px 0;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .review .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .review p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 14.5px;
+    flex-grow: 1;
+  }
+  .review .who {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .review .who .name {
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .review .who .loc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 860px) {
+    .contact-grid { grid-template-columns: 0.85fr 1.15fr; }
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .info-row {
+    display: flex;
+    gap: 16px;
+  }
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-bright);
+  }
+  .info-row h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  .info-row p, .info-row a {
+    margin: 0;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .info-row a:hover, .info-row a:focus-visible { color: var(--accent-bright); }
+  .info-row .sub { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+
+  .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 32px;
+  }
+  .form-row {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 540px) {
+    .form-row.two { grid-template-columns: 1fr 1fr; }
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .field label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .field input, .field textarea, .field select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    padding: 8px 2px;
+    outline: none;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+  .field select option { background: var(--surface); color: var(--text); }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    border-color: var(--accent);
+  }
+  .field textarea { min-height: 90px; }
+
+  .form-note {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: -6px;
+    margin-bottom: 22px;
+  }
+
+  .form-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(217,84,31,0.1);
+    border: 1px solid rgba(217,84,31,0.4);
+    color: var(--bone);
+    padding: 14px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding-block: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  @media (min-width: 720px) {
+    footer { flex-direction: row; justify-content: space-between; align-items: center; }
+  }
+  footer .brand { font-size: 18px; }
+  footer .foot-meta {
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  :focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">IRON<span class="dot">&nbsp;·&nbsp;</span>HOUSE</div>
+  <div class="nav-links">
+    <a href="#plans">Plans</a>
+    <a href="#trainers">Trainers</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Book a trial</a>
+</nav>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<header class="hero wrap">
+  <div class="hero-copy">
+    <p class="eyebrow">Gomti Nagar, Lucknow</p>
+    <h1 class="display">Built like <em>iron.</em><br>Trained like it too.</h1>
+    <p>Iron House is a strength and conditioning gym for people who want to get measurably stronger — powerlifting platforms, a full boxing rig, and coaches who track your numbers, not just your attendance.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Start a free trial class</a>
+      <a class="btn btn-ghost" href="#plans">See membership plans</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="num">6</div><div class="lbl">Years in Gomti Nagar</div></div>
+      <div><div class="num">850+</div><div class="lbl">Active members</div></div>
+      <div><div class="num">4.8</div><div class="lbl">Google rating</div></div>
+    </div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="Iron House gym floor">
+    <div class="plate-tag">
+      <span class="eyebrow">Open today</span>
+      <strong>5:00 AM – 10:30 PM</strong>
+    </div>
+  </div>
+</header>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<section id="plans" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Membership</p>
+    <h2 class="display">Three ways in.</h2>
+    <p>No lock-in contracts. Pause any plan for up to 30 days a year — useful during Lucknow's summer months, or when work travel gets in the way.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="plan">
+      <h3>Foundation</h3>
+      <p class="plan-desc">For building the habit — full floor access, no frills.</p>
+      <div class="price"><span class="amount">₹1,499</span><span class="period">/ month</span></div>
+      <ul>
+        <li>Full gym floor &amp; free-weights access</li>
+        <li>Locker &amp; shower facilities</li>
+        <li>Open hours: 5 AM – 10:30 PM</li>
+        <li>1 guest pass per month</li>
+      </ul>
+      <a class="btn btn-ghost" href="#contact">Choose Foundation</a>
+    </div>
+
+    <div class="plan featured">
+      <span class="plan-tag">Most joined</span>
+      <h3>Forge</h3>
+      <p class="plan-desc">Our most popular plan — floor access plus every group class.</p>
+      <div class="price"><span class="amount">₹2,999</span><span class="period">/ month</span></div>
+      <ul>
+        <li>Everything in Foundation</li>
+        <li>Unlimited group classes (boxing, HIIT, mobility)</li>
+        <li>Monthly InBody composition scan</li>
+        <li>Nutrition check-in with our coach</li>
+        <li>3 guest passes per month</li>
+      </ul>
+      <a class="btn btn-primary" href="#contact">Choose Forge</a>
+    </div>
+
+    <div class="plan">
+      <h3>Ironclad</h3>
+      <p class="plan-desc">For serious lifters — coached programming, built around you.</p>
+      <div class="price"><span class="amount">₹4,999</span><span class="period">/ month</span></div>
+      <ul>
+        <li>Everything in Forge</li>
+        <li>8 personal training sessions / month</li>
+        <li>Custom lifting program, reviewed monthly</li>
+        <li>Priority platform booking</li>
+        <li>Unlimited guest passes</li>
+      </ul>
+      <a class="btn btn-ghost" href="#contact">Choose Ironclad</a>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<section id="trainers" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Coaching staff</p>
+    <h2 class="display">Coaches who lift too.</h2>
+    <p>Every coach at Iron House competes or has competed in their discipline — you're trained by people who still chase their own numbers.</p>
+  </div>
+
+  <div class="trainer-grid">
+    <div class="trainer">
+      <div class="trainer-photo" data-initials="RV"></div>
+      <div class="trainer-tag">
+        <div class="name">Rohit Verma</div>
+        <div class="role">Powerlifting</div>
+        <p class="bio">State-level powerlifter. Runs our platform sessions and all Ironclad programming.</p>
+      </div>
+    </div>
+    <div class="trainer">
+      <div class="trainer-photo" data-initials="AK"></div>
+      <div class="trainer-tag">
+        <div class="name">Ayesha Khan</div>
+        <div class="role">Functional &amp; Mobility</div>
+        <p class="bio">Corrective exercise specialist. Handles injury return and mobility programming.</p>
+      </div>
+    </div>
+    <div class="trainer">
+      <div class="trainer-photo" data-initials="VR"></div>
+      <div class="trainer-tag">
+        <div class="name">Vikram Rathore</div>
+        <div class="role">Boxing &amp; Conditioning</div>
+        <p class="bio">Ex-state boxer. Leads our boxing rig sessions and conditioning circuits.</p>
+      </div>
+    </div>
+    <div class="trainer">
+      <div class="trainer-photo" data-initials="PS"></div>
+      <div class="trainer-tag">
+        <div class="name">Priya Srivastava</div>
+        <div class="role">Nutrition Coaching</div>
+        <p class="bio">Sports nutritionist. Runs the monthly check-ins for Forge and Ironclad members.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<section id="reviews" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Member reviews</p>
+    <h2 class="display">From the floor.</h2>
+  </div>
+
+  <div class="review-grid">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Six months on Ironclad and I've pulled a 40kg PR on deadlift. Rohit actually tracks my numbers week to week — first gym in Lucknow where I've felt coached, not just supervised."</p>
+      <div class="who"><span class="name">Aditya Mishra</span><span class="loc">Gomti Nagar</span></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Switched from a Hazratganj gym that was always overcrowded by 7 PM. Iron House's boxing classes with Vikram are the best conditioning session in the city, hands down."</p>
+      <div class="who"><span class="name">Simran Kaur</span><span class="loc">Hazratganj</span></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★☆</div>
+      <p>"Ayesha helped me come back from a shoulder injury without losing months of progress. The Forge plan's monthly scan keeps me honest about what's actually changing."</p>
+      <div class="who"><span class="name">Faizan Ahmed</span><span class="loc">Indira Nagar</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<section id="contact" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Visit or call</p>
+    <h2 class="display">Come see the floor.</h2>
+    <p>Drop by for a walk-through, or leave your number and we'll set up a free trial class.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-row">
+        <div class="info-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+915224567890">+91 522 456 7890</a>
+          <p class="sub">Mon–Sun, 5:00 AM – 10:30 PM</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Address</h4>
+          <p>4/112 Vipin Khand, Gomti Nagar,<br>Lucknow, Uttar Pradesh 226010</p>
+          <p class="sub">Opposite Phoenix Palassio, above Café Ashiyana</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon – Sat: 5:00 AM – 10:30 PM</p>
+          <p class="sub">Sunday: 6:00 AM – 1:00 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+      <div id="form-success" class="form-success" hidden>
+        <span aria-hidden="true">✓</span>
+        <span>Thanks — we'll call you back within a day to set up your trial class.</span>
+      </div>
+      <div class="form-row two">
+        <div class="field">
+          <label for="cf-name">Full name</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="cf-phone">Phone number</label>
+          <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-interest">Interested in</label>
+        <select id="cf-interest" name="interest">
+          <option>Foundation — ₹1,499/mo</option>
+          <option selected>Forge — ₹2,999/mo</option>
+          <option>Ironclad — ₹4,999/mo</option>
+          <option>Not sure yet — just want a trial class</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cf-message">Message (optional)</label>
+        <textarea id="cf-message" name="message" placeholder="Tell us your goals, or a good time to call."></textarea>
+      </div>
+      <p class="form-note">We'll call within one working day. No spam, ever.</p>
+      <button class="btn btn-primary" type="submit" style="width:100%;">Request a callback</button>
+    </form>
+  </div>
+</section>
+
+<div class="seam"><span class="rivet"></span><span class="rivet"></span></div>
+
+<footer class="wrap">
+  <div class="brand">IRON<span class="dot">&nbsp;·&nbsp;</span>HOUSE</div>
+  <div class="foot-meta">
+    <span>© 2026 Iron House Gym, Gomti Nagar, Lucknow</span>
+    <span>+91 522 456 7890</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('form-success').hidden = false;
+    this.reset();
+    document.getElementById('cf-interest').value = 'Forge — ₹2,999/mo';
+  });
+</script>
+
+</body>
+</html>
