@@ -1,4 +1,6 @@
 import { ShieldCheck, Clock, Headphones, Wallet } from "lucide-react";
+import Reveal from "./Reveal";
+import RevealGroup from "./RevealGroup";
 
 const REASONS = [
   {
@@ -25,25 +27,28 @@ const REASONS = [
 
 export default function WhyUs() {
   return (
-    <section className="border-y border-border py-24 sm:py-28">
+    <section className="border-y border-border bg-muted/40 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-accent-2">
             Why work with us
           </h2>
           <p className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             What clients notice after the first project
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {REASONS.map((reason) => (
-            <div key={reason.title} className="glass rounded-3xl p-6">
+            <div
+              key={reason.title}
+              className="rounded-3xl border border-border bg-card p-6 shadow-sm"
+            >
               <div
                 className="flex h-11 w-11 items-center justify-center rounded-xl"
                 style={{
                   background:
-                    "linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 25%, transparent), color-mix(in srgb, var(--color-accent-2) 25%, transparent))",
+                    "linear-gradient(135deg, color-mix(in srgb, var(--color-accent-glow) 18%, transparent), color-mix(in srgb, var(--color-accent-2-glow) 18%, transparent))",
                 }}
               >
                 <reason.icon className="h-5 w-5 text-accent-2" aria-hidden="true" />
@@ -54,7 +59,7 @@ export default function WhyUs() {
               </p>
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

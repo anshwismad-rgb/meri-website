@@ -6,6 +6,8 @@ import {
   Megaphone,
   MousePointerClick,
 } from "lucide-react";
+import Reveal from "./Reveal";
+import RevealGroup from "./RevealGroup";
 
 const SERVICES = [
   {
@@ -51,26 +53,26 @@ export default function Services() {
   return (
     <section id="services" className="py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-accent-2">
             What we do
           </h2>
           <p className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             One team, every part of your online presence
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((service) => (
             <div
               key={service.title}
-              className={`glass group rounded-3xl p-6 transition-transform hover:-translate-y-1 ${service.span}`}
+              className={`group rounded-3xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md ${service.span}`}
             >
               <div
-                className="flex h-11 w-11 items-center justify-center rounded-xl"
+                className="flex h-11 w-11 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
                 style={{
                   background:
-                    "linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 25%, transparent), color-mix(in srgb, var(--color-accent-2) 25%, transparent))",
+                    "linear-gradient(135deg, color-mix(in srgb, var(--color-accent-glow) 18%, transparent), color-mix(in srgb, var(--color-accent-2-glow) 18%, transparent))",
                 }}
               >
                 <service.icon className="h-5 w-5 text-accent-2" aria-hidden="true" />
@@ -81,7 +83,7 @@ export default function Services() {
               </p>
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

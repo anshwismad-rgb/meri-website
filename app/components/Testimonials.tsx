@@ -1,4 +1,6 @@
 import { Star } from "lucide-react";
+import Reveal from "./Reveal";
+import RevealGroup from "./RevealGroup";
 
 const TESTIMONIALS = [
   {
@@ -32,20 +34,23 @@ function initials(name: string) {
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="border-y border-border py-24 sm:py-28">
+    <section id="testimonials" className="border-y border-border bg-muted/40 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-accent-2">
             Client feedback
           </h2>
           <p className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             What clients say after working with us
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <RevealGroup className="mt-14 grid gap-6 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="glass flex flex-col rounded-3xl p-6">
+            <figure
+              key={t.name}
+              className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-sm"
+            >
               <div className="flex gap-0.5 text-accent-2" aria-hidden="true">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
@@ -59,7 +64,7 @@ export default function Testimonials() {
                   className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white"
                   style={{
                     background:
-                      "linear-gradient(135deg, var(--color-accent), var(--color-accent-2))",
+                      "linear-gradient(135deg, var(--color-accent-glow), var(--color-accent-2-glow))",
                   }}
                   aria-hidden="true"
                 >
@@ -72,7 +77,7 @@ export default function Testimonials() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

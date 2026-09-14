@@ -1,3 +1,6 @@
+import Reveal from "./Reveal";
+import RevealGroup from "./RevealGroup";
+
 const PROJECTS = [
   { name: "Add your project name", category: "E-commerce" },
   { name: "Add your project name", category: "Web App" },
@@ -8,29 +11,29 @@ export default function Work() {
   return (
     <section id="work" className="py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-accent-2">
             Recent work
           </h2>
           <p className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             A few projects we&apos;re proud of
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project, i) => (
             <a
               key={i}
               href="#contact"
-              className="glass group block cursor-pointer overflow-hidden rounded-3xl transition-transform hover:-translate-y-1"
+              className="group block cursor-pointer overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
             >
               <div
-                className="flex h-44 items-center justify-center text-sm font-medium text-white/60"
+                className="flex h-44 items-center justify-center text-sm font-medium text-white/80"
                 style={{
                   background:
                     i % 2 === 0
-                      ? "linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 35%, var(--color-card)), color-mix(in srgb, var(--color-accent-2) 25%, var(--color-card)))"
-                      : "linear-gradient(135deg, color-mix(in srgb, var(--color-accent-2) 30%, var(--color-card)), color-mix(in srgb, var(--color-accent) 30%, var(--color-card)))",
+                      ? "linear-gradient(135deg, var(--color-accent-glow), var(--color-accent-2-glow))"
+                      : "linear-gradient(135deg, var(--color-accent-2-glow), var(--color-accent-glow))",
                 }}
               >
                 Replace with a project screenshot
@@ -45,7 +48,7 @@ export default function Work() {
               </div>
             </a>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );
