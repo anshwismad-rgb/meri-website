@@ -55,12 +55,12 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary text-slate-200">
+    <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-lg font-extrabold text-white">Wismad</p>
-            <p className="mt-3 flex items-start gap-2 text-sm text-slate-300">
+            <p className="font-display text-lg font-bold">Wismad</p>
+            <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
               2nd Floor, Vipul Khand, Gomti Nagar, Lucknow, Uttar Pradesh, India
             </p>
@@ -70,7 +70,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-white/10 transition-colors hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="glass flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   <social.icon className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -79,13 +79,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Services</p>
+            <p className="text-sm font-semibold">Services</p>
             <ul className="mt-4 flex flex-col gap-3">
               {SERVICE_LINKS.map((link) => (
                 <li key={link}>
                   <a
                     href="#services"
-                    className="inline-block cursor-pointer py-1 text-sm text-slate-300 hover:text-white"
+                    className="inline-block cursor-pointer py-1 text-sm text-muted-foreground hover:text-foreground"
                   >
                     {link}
                   </a>
@@ -95,13 +95,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Company</p>
+            <p className="text-sm font-semibold">Company</p>
             <ul className="mt-4 flex flex-col gap-3">
               {COMPANY_LINKS.map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="inline-block cursor-pointer py-1 text-sm text-slate-300 hover:text-white"
+                    className="inline-block cursor-pointer py-1 text-sm text-muted-foreground hover:text-foreground"
                   >
                     {link}
                   </a>
@@ -111,15 +111,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Get in touch</p>
-            <ul className="mt-4 flex flex-col gap-3 text-sm text-slate-300">
+            <p className="text-sm font-semibold">Get in touch</p>
+            <ul className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
               <li>
-                <a href="tel:+919835507468" className="cursor-pointer hover:text-white">
+                <a href="tel:+919835507468" className="cursor-pointer hover:text-foreground">
                   +91 98355 07468
                 </a>
               </li>
               <li>
-                <a href="mailto:support@wismad.com" className="cursor-pointer hover:text-white">
+                <a href="mailto:support@wismad.com" className="cursor-pointer hover:text-foreground">
                   support@wismad.com
                 </a>
               </li>
@@ -127,7 +127,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-slate-400">
+        <div className="mt-12 border-t border-border pt-6 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Wismad. All rights reserved.
         </div>
       </div>

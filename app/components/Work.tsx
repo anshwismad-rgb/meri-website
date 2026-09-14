@@ -1,30 +1,18 @@
 const PROJECTS = [
-  {
-    name: "Add your project name",
-    category: "E-commerce",
-    gradient: "from-primary to-accent",
-  },
-  {
-    name: "Add your project name",
-    category: "Web App",
-    gradient: "from-accent to-secondary",
-  },
-  {
-    name: "Add your project name",
-    category: "Marketing Site",
-    gradient: "from-secondary to-primary",
-  },
+  { name: "Add your project name", category: "E-commerce" },
+  { name: "Add your project name", category: "Web App" },
+  { name: "Add your project name", category: "Marketing Site" },
 ];
 
 export default function Work() {
   return (
-    <section id="work" className="bg-background py-20 sm:py-24">
+    <section id="work" className="py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-accent">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-accent-2">
             Recent work
           </h2>
-          <p className="mt-2 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+          <p className="font-display mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
             A few projects we&apos;re proud of
           </p>
         </div>
@@ -34,18 +22,24 @@ export default function Work() {
             <a
               key={i}
               href="#contact"
-              className="group block cursor-pointer overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-md"
+              className="glass group block cursor-pointer overflow-hidden rounded-3xl transition-transform hover:-translate-y-1"
             >
               <div
-                className={`flex h-44 items-center justify-center bg-gradient-to-br ${project.gradient} text-sm font-medium text-white/70`}
+                className="flex h-44 items-center justify-center text-sm font-medium text-white/60"
+                style={{
+                  background:
+                    i % 2 === 0
+                      ? "linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 35%, var(--color-card)), color-mix(in srgb, var(--color-accent-2) 25%, var(--color-card)))"
+                      : "linear-gradient(135deg, color-mix(in srgb, var(--color-accent-2) 30%, var(--color-card)), color-mix(in srgb, var(--color-accent) 30%, var(--color-card)))",
+                }}
               >
                 Replace with a project screenshot
               </div>
               <div className="p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-accent">
+                <p className="text-xs font-semibold uppercase tracking-wide text-accent-2">
                   {project.category}
                 </p>
-                <h3 className="mt-1 text-base font-bold text-primary group-hover:underline">
+                <h3 className="font-display mt-1 text-base font-bold group-hover:underline">
                   {project.name}
                 </h3>
               </div>

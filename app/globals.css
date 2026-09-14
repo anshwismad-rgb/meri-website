@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #0f172a;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #334155;
-  --color-accent: #0369a1;
+  --color-primary: #f8fafc;
+  --color-primary-foreground: #0b0b14;
+  --color-secondary: #94a3b8;
+  --color-accent: #7c5cff;
+  --color-accent-2: #22d3ee;
   --color-accent-foreground: #ffffff;
-  --color-background: #f8fafc;
-  --color-foreground: #020617;
-  --color-card: #ffffff;
-  --color-card-foreground: #020617;
-  --color-muted: #e8ecf1;
-  --color-muted-foreground: #475569;
-  --color-border: #e2e8f0;
-  --color-ring: #0f172a;
+  --color-background: #0b0b14;
+  --color-foreground: #f8fafc;
+  --color-card: #14141f;
+  --color-card-foreground: #f8fafc;
+  --color-muted: #1a1a27;
+  --color-muted-foreground: #94a3b8;
+  --color-border: #26263a;
+  --color-ring: #7c5cff;
 }
 
 @theme inline {
@@ -21,6 +22,7 @@
   --color-primary-foreground: var(--color-primary-foreground);
   --color-secondary: var(--color-secondary);
   --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
   --color-accent-foreground: var(--color-accent-foreground);
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
@@ -30,13 +32,32 @@
   --color-muted-foreground: var(--color-muted-foreground);
   --color-border: var(--color-border);
   --color-ring: var(--color-ring);
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-space-grotesk);
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-accent-2), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(248, 250, 252, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(248, 250, 252, 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {

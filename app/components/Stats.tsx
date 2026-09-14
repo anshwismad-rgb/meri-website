@@ -7,11 +7,11 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="border-b border-border bg-card">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
+    <section className="relative px-4 sm:px-6">
+      <div className="glass mx-auto grid max-w-5xl grid-cols-2 gap-8 rounded-3xl px-6 py-10 sm:-mt-6 md:grid-cols-4">
         {STATS.map((stat) => (
           <div key={stat.label} className="text-center">
-            <p className="text-3xl font-extrabold text-primary sm:text-4xl">{stat.value}</p>
+            <p className="font-display text-3xl font-bold sm:text-4xl">{stat.value}</p>
             <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
           </div>
         ))}
