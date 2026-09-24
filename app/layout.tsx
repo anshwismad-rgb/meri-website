@@ -1,32 +1,51 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import MotionRuntime from "./components/MotionRuntime";
+import { Backdrop, FloatingActions, ScrollProgress } from "./components/Chrome";
+import { site } from "@/lib/site";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const jakarta = localFont({
+  src: "./fonts/PlusJakartaSans-latin.woff2",
+  weight: "200 800",
+  variable: "--font-jakarta",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Wismad — Web Development & Digital Marketing Agency",
+  metadataBase: new URL(site.url),
+  title: {
+    default: "WISMAD — Website Development & Digital Marketing Agency in Lucknow",
+    template: "%s | WISMAD",
+  },
   description:
-    "Wismad builds fast, accessible websites and runs digital marketing that gets measurable results — web development, e-commerce, SEO and PPC.",
+    "WISMAD builds websites, e-commerce stores and mobile apps, and runs SEO, Google Ads and social media marketing for businesses in India, the UK, USA, Canada and Australia.",
+  openGraph: { siteName: "WISMAD", type: "website", locale: "en_IN" },
 };
+
+export const viewport: Viewport = { themeColor: "#1a5fdb" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
+      <head>
+        {/* Marks the document as JS-capable before first paint so scroll-reveal
+            styles apply without a flash; no-JS visitors see everything. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body>
+        <ScrollProgress />
+        <Backdrop />
+        <div className="relative">
+          <Nav />
+          <main id="main">{children}</main>
+        </div>
+        <Footer />
+        <FloatingActions />
+        <MotionRuntime />
+      </body>
     </html>
   );
 }
