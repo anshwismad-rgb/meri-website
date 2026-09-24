@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowRight, Check, LoaderCircle, Plus, Search } from "lucide-react";
 import { useEffect, useId, useState, type FormEvent } from "react";
-import { processSteps } from "@/lib/site";
+import { processSteps, site } from "@/lib/site";
 
 export function WordRotator({ words, interval = 2400 }: { words: string[]; interval?: number }) {
   const [i, setI] = useState(0);
@@ -179,15 +179,19 @@ export function Accordion({ items, defaultOpen = 0, searchable = false }: { item
 const interests = ["Website", "E-commerce", "Mobile app", "SEO", "Google Ads", "Social media", "Branding"];
 
 /**
- * Enquiry form with inline validation. There is no backend yet: wire `submit`
- * to your email service / CRM (e.g. a Next.js route handler) before launch.
+ * Enquiry form with inline validation. Submissions go to Web3Forms, which
+ * emails them to the address the access key was created for. Set
+ * NEXT_PUBLIC_WEB3FORMS_KEY (the key is designed to be public). Without a key,
+ * the form falls back to opening the visitor's email app.
  */
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [picks, setPicks] = useState<string[]>(["Website"]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [failed, setFailed] = useState(false);
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") || "").trim();
@@ -203,8 +207,40 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       first?.focus();
       return;
     }
+    const message = String(data.get("message") || "").trim();
+    const body = `Name: ${name}\nContact: ${contact}\nInterested in: ${picks.join(", ") || "—"}\n\n${message}`;
+
+    if (!WEB3FORMS_KEY) {
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(`Website enquiry from ${name}`)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
+    setFailed(false);
     setState("sending");
-    setTimeout(() => setState("sent"), 900);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New website enquiry from ${name}`,
+          from_name: "WISMAD website",
+          name,
+          contact,
+          ...(isEmail ? { email: contact, replyto: contact } : { phone: contact }),
+          interested_in: picks.join(", "),
+          message,
+          page: window.location.pathname,
+          botcheck: data.get("botcheck") ? "spam" : "",
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) throw new Error(json.message || "Request failed");
+      setState("sent");
+    } catch {
+      setFailed(true);
+      setState("idle");
+    }
   };
 
   if (state === "sent") {
@@ -223,6 +259,8 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
   return (
     <form onSubmit={submit} noValidate className="flex flex-col gap-4">
+      {/* Honeypot: hidden from people, filled in by spam bots. */}
+      <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2"}`}>
         <div className="flex flex-col gap-1.5">
           <label htmlFor="cf-name" className="text-[13.5px] font-bold text-ink-2">
@@ -279,6 +317,15 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
           </>
         )}
       </button>
+      {failed && (
+        <p role="alert" className="m-0 rounded-xl bg-red-50 px-4 py-3 text-center text-[14px] font-semibold text-red-700">
+          Sorry, your message couldn&apos;t be sent. Please try again, or call{" "}
+          <a href={site.phoneIN.href} className="underline">
+            {site.phoneIN.display}
+          </a>
+          .
+        </p>
+      )}
       <p className="m-0 text-center text-[12.5px] text-muted-2">We never share your details. No spam, ever.</p>
     </form>
   );
